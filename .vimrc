@@ -2,7 +2,6 @@
 set nocompatible
 set history=2000
 
-
 " VUNDLE CONFIG
 filetype off " to resolve runtimepath issue when loading vundle
 
@@ -19,11 +18,18 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 " delimitMate
 Plugin 'Raimondi/delimitMate'
+" vim-ruby
+Plugin 'vim-ruby/vim-ruby'
+" vim-endwise
+Plugin 'tpope/vim-endwise'
+" vim-ruby-xmpfilter
+Plugin 't9md/vim-ruby-xmpfilter'
 
 call vundle#end()
 
 filetype plugin indent on "reset after vundle has done its stuff 
 syntax on
+let g:ruby_path = system('echo $HOME/.rbenv/shims') "Help speed things up when working with ruby files
 
 " AUTO COMMANDS
 augroup vimrcEx
@@ -51,4 +57,11 @@ augroup vimrcEx
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 augroup END
 
+" XMPFILTER KEYBINDS 
+nmap <buffer> <F5> <Plug>(xmpfilter-run)
+xmap <buffer> <F5> <Plug>(xmpfilter-run)
+imap <buffer> <F5> <Plug>(xmpfilter-run)
 
+nmap <buffer> <F4> <Plug>(xmpfilter-mark)
+xmap <buffer> <F4> <Plug>(xmpfilter-mark)
+imap <buffer> <F4> <Plug>(xmpfilter-mark)
