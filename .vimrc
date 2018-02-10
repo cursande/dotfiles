@@ -24,6 +24,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 " vim-ruby-xmpfilter
 Plugin 't9md/vim-ruby-xmpfilter'
+" vim-slime
+Plugin 'jpalardy/vim-slime' 
 
 call vundle#end()
 
@@ -65,3 +67,11 @@ imap <buffer> <F5> <Plug>(xmpfilter-run)
 nmap <buffer> <F4> <Plug>(xmpfilter-mark)
 xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 imap <buffer> <F4> <Plug>(xmpfilter-mark)
+
+
+" SLIME
+" set slime to use tmux session 
+let g:slime_target = "tmux"
+
+" run vim with split tmux window + REPL
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
