@@ -1,6 +1,7 @@
 " BASIC CONFIG
 set nocompatible
 set history=2000
+set showcmd
 
 " VUNDLE CONFIG
 filetype off " to resolve runtimepath issue when loading vundle
@@ -14,18 +15,26 @@ Plugin 'VundleVim/Vundle.vim'
 
 " PLUGINS
 
-" ctrlp
-Plugin 'ctrlpvim/ctrlp.vim'
+" fzf
+Plugin 'junegunn/fzf' 
+" fzf.vim
+Plugin 'junegunn/fzf.vim'
+" ack.vim
+Plugin 'mileszs/ack.vim'
 " delimitMate
 Plugin 'Raimondi/delimitMate'
 " vim-ruby
 Plugin 'vim-ruby/vim-ruby'
 " vim-endwise
 Plugin 'tpope/vim-endwise'
-" vim-ruby-xmpfilter
-Plugin 't9md/vim-ruby-xmpfilter'
 " vim-slime
-Plugin 'jpalardy/vim-slime' 
+Plugin 'jpalardy/vim-slime'
+" goyo
+Plugin 'junegunn/goyo.vim'
+" vim-rspec
+Plugin 'thoughtbot/vim-rspec'
+" vim-commentary
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 
@@ -59,15 +68,18 @@ augroup vimrcEx
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 augroup END
 
-" XMPFILTER KEYBINDS 
-nmap <buffer> <F5> <Plug>(xmpfilter-run)
-xmap <buffer> <F5> <Plug>(xmpfilter-run)
-imap <buffer> <F5> <Plug>(xmpfilter-run)
+" FZF.VIM
+" map ctrl+p to fzf in vim
+nmap <c-p> :Files<CR>
 
-nmap <buffer> <F4> <Plug>(xmpfilter-mark)
-xmap <buffer> <F4> <Plug>(xmpfilter-mark)
-imap <buffer> <F4> <Plug>(xmpfilter-mark)
+" ACK.VIM
+" Use ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" If I'm using my config on a system where I don't have ag...
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " SLIME
 " set slime to use tmux session 
@@ -75,3 +87,12 @@ let g:slime_target = "tmux"
 
 " run vim with split tmux window + REPL
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+
+" VIM-RSPEC
+" key mapping
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
