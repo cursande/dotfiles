@@ -73,12 +73,10 @@ augroup END
 nmap <c-p> :Files<CR>
 
 " ACK.VIM
-" Use ag
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " If I'm using my config on a system where I don't have ag...
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
 endif
 
 " SLIME
