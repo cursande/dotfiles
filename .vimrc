@@ -35,6 +35,8 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'thoughtbot/vim-rspec'
 " vim-commentary
 Plugin 'tpope/vim-commentary'
+" vim-fugitive
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
