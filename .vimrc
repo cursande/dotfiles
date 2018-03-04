@@ -37,6 +37,8 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-commentary'
 " vim-fugitive
 Plugin 'tpope/vim-fugitive'
+" switch.vim
+Plugin 'AndrewRadev/switch.vim'
 
 call vundle#end()
 
@@ -69,6 +71,14 @@ augroup vimrcEx
   " javascript
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 augroup END
+
+" KEYBINDINGS
+" set no highlight to leader + c
+map <Leader>c :noh
+
+" remap writing to file to F2
+noremap  <f2> :w<return>
+inoremap <f2> <c-o>:w<return>
 
 " FZF.VIM
 " map ctrl+p to fzf in vim
