@@ -105,6 +105,13 @@ function cd_up() {
 cd $(printf "%0.s../" $(seq 1 $1 ));
 }
 
+
+# mkcd function ~ create directory and cd into it
+function mkcd() {
+  mkdir "$1"
+  cd "$1"
+}
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -120,6 +127,8 @@ alias rubyhost='ruby -run -e httpd . -p 8000'
 alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"' 
 
 alias xi='xinput'
+
+alias xie='xinput enable'
 
 alias xid='xinput disable'
 
@@ -140,6 +149,9 @@ if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
 
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Node version manager
 export NVM_DIR="/home/afar/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -150,3 +162,4 @@ export PATH="$PATH:/opt/yarn-[version]/bin"
 #rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
