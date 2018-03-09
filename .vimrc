@@ -1,9 +1,14 @@
-" BASIC CONFIG
+" BASIC CONFIG {{{
+
 set nocompatible
 set history=2000
 set showcmd
+set noswapfile
 
-" VUNDLE CONFIG
+" }}}
+
+" VUNDLE CONFIG {{{
+
 filetype off " to resolve runtimepath issue when loading vundle
 
 " set runtime
@@ -46,7 +51,10 @@ filetype plugin indent on "reset after vundle has done its stuff
 syntax on
 let g:ruby_path = system('echo $HOME/.rbenv/shims') "Help speed things up when working with ruby files
 
-" AUTO COMMANDS
+" }}}
+
+" AUTO COMMANDS {{{
+
 augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
@@ -72,13 +80,23 @@ augroup vimrcEx
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
 augroup END
 
-" KEYBINDINGS
+" }}}
+
+" KEYBINDINGS {{{
+
 " set no highlight to leader + c
 map <Leader>c :noh
 
 " remap writing to file to F2
 noremap  <f2> :w<return>
 inoremap <f2> <c-o>:w<return>
+
+" F5 to bring up buffer list, hit buffer id no to select it
+noremap <F5> :buffers<CR>:buffer<Space>
+
+" }}}
+
+" PLUGIN CONFIG {{{
 
 " FZF.VIM
 " map ctrl+p to fzf in vim
@@ -106,3 +124,4 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+" }}}
