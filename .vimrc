@@ -4,6 +4,7 @@ set nocompatible
 set history=2000
 set showcmd
 set noswapfile
+set nohlsearch
 
 " }}}
 
@@ -44,6 +45,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 " switch.vim
 Plugin 'AndrewRadev/switch.vim'
+" emmet.vim
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 
@@ -66,7 +69,7 @@ augroup vimrcEx
     \ endif
 
   "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,sass,cucumber set ai sw=2 sts=2 et
+  autocmd FileType ruby,haml,eruby,yaml,html,sass,scss,cucumber set ai sw=2 sts=2 et
 
   autocmd! BufRead,BufNewFile *.sass setfiletype sass 
 
@@ -124,4 +127,7 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
+"EMMET.VIM
+" use tab to for expanding abbreviations (but not lose it for indenting)
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " }}}
