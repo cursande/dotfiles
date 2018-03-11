@@ -35,18 +35,20 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 " vim-slime
 Plugin 'jpalardy/vim-slime'
-" goyo
-Plugin 'junegunn/goyo.vim'
-" vim-rspec
-Plugin 'thoughtbot/vim-rspec'
 " vim-commentary
 Plugin 'tpope/vim-commentary'
 " vim-fugitive
 Plugin 'tpope/vim-fugitive'
+" vim-surround
+Plugin 'tpope/vim-surround'
 " switch.vim
 Plugin 'AndrewRadev/switch.vim'
 " emmet.vim
 Plugin 'mattn/emmet-vim'
+" vim-ragtag
+Plugin 'tpope/vim-ragtag'
+" rainbow_parentheses.vim
+Plugin 'junegunn/rainbow_parentheses.vim'
 
 call vundle#end()
 
@@ -90,6 +92,9 @@ augroup END
 " set no highlight to leader + c
 map <Leader>c :noh
 
+" for surrounding a word in parens with leader + s
+noremap <leader>s viw<esc>a)<esc>hbi(<esc>lel
+
 " remap writing to file to F2
 noremap  <f2> :w<return>
 inoremap <f2> <c-o>:w<return>
@@ -119,15 +124,15 @@ let g:slime_target = "tmux"
 " run vim with split tmux window + REPL
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 
-" VIM-RSPEC
-" key mapping
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
-"EMMET.VIM
+" EMMET.VIM
 " use tab to for expanding abbreviations (but not lose it for indenting)
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" RAINBOW_PARENTHESES.VIM
+" automatically use the plugin when working with lisp files
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+
 " }}}
