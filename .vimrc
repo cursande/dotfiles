@@ -92,9 +92,6 @@ augroup END
 " set no highlight to leader + c
 map <Leader>c :noh
 
-" for surrounding a word in parens with leader + s
-noremap <leader>s viw<esc>a)<esc>hbi(<esc>lel
-
 " remap writing to file to F2
 noremap  <f2> :w<return>
 inoremap <f2> <c-o>:w<return>
