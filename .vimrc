@@ -119,8 +119,9 @@ let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 
 " EMMET.VIM
+" only use emmet with certain files
 " use tab to for expanding abbreviations (but not lose it for indenting)
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+imap <expr> <leader><tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " RAINBOW_PARENTHESES.VIM
 " automatically use the plugin when working with lisp files
