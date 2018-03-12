@@ -89,9 +89,6 @@ augroup END
 
 " KEYBINDINGS {{{
 
-" set no highlight to leader + c
-map <Leader>c :noh
-
 " remap writing to file to F2
 noremap  <f2> :w<return>
 inoremap <f2> <c-o>:w<return>
