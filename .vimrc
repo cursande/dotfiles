@@ -5,6 +5,9 @@ set history=2000
 set showcmd
 set noswapfile
 set nohlsearch
+set wrap
+set tw=0 wm=0
+set lbr
 
 " }}}
 
@@ -49,6 +52,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-ragtag'
 " rainbow_parentheses.vim
 Plugin 'junegunn/rainbow_parentheses.vim'
+" vim-autoformat
+Plugin 'Chiel92/vim-autoformat'
 
 call vundle#end()
 
