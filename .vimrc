@@ -54,6 +54,8 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'junegunn/rainbow_parentheses.vim'
 " vim-autoformat
 Plugin 'Chiel92/vim-autoformat'
+" splitjoin.vim
+Plugin 'AndrewRadev/splitjoin.vim'
 
 call vundle#end()
 
@@ -100,6 +102,10 @@ inoremap <f2> <c-o>:w<return>
 
 " F5 to bring up buffer list, hit buffer id no to select it
 noremap <F5> :buffers<CR>:buffer<Space>
+
+" F12 to fix up syntax highlighting
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " }}}
 
