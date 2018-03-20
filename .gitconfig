@@ -1,3 +1,12 @@
+[user]
+	email = adfarries@gmail.com
+	name = Alex F
 [alias]
-	pub = "!git push -u origin"
-	unstage = "reset HEAD"
+	pub = push -u origin
+	unstage = reset HEAD
+	co = checkout
+	st = status
+	ci = commit -m
+	br = branch
+[push]
+	default = matching
