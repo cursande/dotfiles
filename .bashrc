@@ -122,7 +122,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # My aliases
-alias rubyhost='ruby -run -e httpd . -p 8000'
+alias rubyhost='ruby -run -e httpd . -p'
 
 alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"' 
 
@@ -148,6 +148,9 @@ fi
 if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
+
+# git autocompletion
+source ~/git-completion.bash
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
