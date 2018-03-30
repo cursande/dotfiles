@@ -162,6 +162,9 @@ export NVM_DIR="/home/afar/.nvm"
 # Yarn
 export PATH="$PATH:/opt/yarn-[version]/bin"
 
+# set go path
+export GOPATH="$HOME/go"
+
 #rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
