@@ -56,6 +56,8 @@ Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'Chiel92/vim-autoformat'
 " splitjoin.vim
 Plugin 'AndrewRadev/splitjoin.vim'
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
@@ -140,5 +142,9 @@ augroup rainbow_lisp
   autocmd!
   autocmd FileType lisp,clojure,scheme RainbowParentheses
 augroup END
+
+" NERDTREE
+" set ctrl+b to open tree 
+map <C-b> :NERDTreeToggle<CR>
 
 " }}}
