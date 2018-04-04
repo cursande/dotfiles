@@ -24,39 +24,22 @@ Plugin 'VundleVim/Vundle.vim'
 
 " PLUGINS
 
-" fzf
 Plugin 'junegunn/fzf' 
-" fzf.vim
 Plugin 'junegunn/fzf.vim'
-" ack.vim
 Plugin 'mileszs/ack.vim'
-" delimitMate
 Plugin 'Raimondi/delimitMate'
-" vim-ruby
 Plugin 'vim-ruby/vim-ruby'
-" vim-endwise
 Plugin 'tpope/vim-endwise'
-" vim-slime
 Plugin 'jpalardy/vim-slime'
-" vim-commentary
 Plugin 'tpope/vim-commentary'
-" vim-fugitive
 Plugin 'tpope/vim-fugitive'
-" vim-surround
 Plugin 'tpope/vim-surround'
-" switch.vim
 Plugin 'AndrewRadev/switch.vim'
-" emmet.vim
 Plugin 'mattn/emmet-vim'
-" vim-ragtag
 Plugin 'tpope/vim-ragtag'
-" rainbow_parentheses.vim
 Plugin 'junegunn/rainbow_parentheses.vim'
-" vim-autoformat
 Plugin 'Chiel92/vim-autoformat'
-" splitjoin.vim
 Plugin 'AndrewRadev/splitjoin.vim'
-" Nerdtree
 Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
