@@ -8,6 +8,8 @@ set nohlsearch
 set wrap
 set tw=0 wm=0
 set lbr
+set backspace=indent,eol,start
+let g:ruby_path = system('echo $HOME/.rbenv/shims') "Help speed things up when working with ruby files
 
 " }}}
 
@@ -41,12 +43,13 @@ Plugin 'junegunn/rainbow_parentheses.vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()
 
 filetype plugin indent on "reset after vundle has done its stuff 
 syntax on
-let g:ruby_path = system('echo $HOME/.rbenv/shims') "Help speed things up when working with ruby files
 
 " }}}
 

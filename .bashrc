@@ -16,8 +16,11 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=2500
+HISTFILESIZE=2500
+
+# print timestamps for each entry
+export HISTTIMEFORMAT="%h %d %H:%M:%S "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -154,10 +157,11 @@ source ~/git-completion.bash
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # Node version manager
 export NVM_DIR="/home/afar/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Yarn
 export PATH="$PATH:/opt/yarn-[version]/bin"
