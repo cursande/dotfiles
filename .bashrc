@@ -137,6 +137,9 @@ alias xid='xinput disable'
 
 alias cd..='cd_up'
 
+# emacsclient tells emacs to edit a given file e.g. 'e prog.scm'
+alias e='emacsclient --no-wait'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
