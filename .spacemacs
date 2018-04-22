@@ -42,10 +42,11 @@ values."
      auto-completion
      ;; better-defaults
      emacs-lisp
-     git
-     markdown
-     org
+      git
+      markdown
+      org
      (shell :variables
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      ;; spell-checking
@@ -60,7 +61,10 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages
+   '(
+     evil-search-highlight-persist
+     )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -316,6 +320,14 @@ you should place your code here."
 
   ; write to file with space + f2
   (spacemacs/set-leader-keys "<f2>" 'save-buffer)
+  ; allow spacemacs to edit git commit messages
+  (global-git-commit-mode t)
+  ; magit fullscreen
+  (setq-default git-magit-status-fullscreen t)
+  ; space + f7 to send to scheme repl
+  (spacemacs/set-leader-keys "<f7>" 'scheme-send-region)
+  ; display time
+  (display-time-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
