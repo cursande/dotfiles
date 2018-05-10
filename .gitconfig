@@ -8,5 +8,17 @@
 	st = status
 	ci = commit -m
 	br = branch
+	force-pull = !git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+	pushup = !git push -u origin `git symbolic-ref --short HEAD`
+	sl = stash list
+	sll = stash-list
+	slll = stash-list --full
+	ss = stash save
+	sa = "!sh -c 'git stash apply stash@{$1}' -"
+	sd = "!sh -c 'git stash drop stash@{$1}' -"
 [push]
 	default = matching
+
+
+[pull]
+	rebase = true
