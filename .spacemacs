@@ -42,16 +42,16 @@ values."
      auto-completion
      ;; better-defaults
      emacs-lisp
-      git
-      markdown
-      org
+     git
+     markdown
+     org
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
-     ;; version-control
+     version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -328,6 +328,8 @@ you should place your code here."
   (spacemacs/set-leader-keys "<f7>" 'scheme-send-region)
   ; display time
   (display-time-mode 1)
+  ; don't create lockfiles
+  (setq create-lockfiles nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
