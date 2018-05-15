@@ -16,8 +16,15 @@
 	ss = stash save
 	sa = "!sh -c 'git stash apply stash@{$1}' -"
 	sd = "!sh -c 'git stash drop stash@{$1}' -"
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate
+	lsb = !git ls master..HEAD
+	clear = !git add . && git reset --hard
+	fp = push --force-with-lease
+	purge = !git checkout master && git pull && git branch --merged | grep -Ev 'master' | xargs -n 1 git branch -d
+	mup = !git checkout master && git pull && git checkout -
+	mupr = !git mup && git rebase master
 [push]
-	default = matching
+	default = current
 
 
 [pull]
