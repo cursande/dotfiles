@@ -7,6 +7,9 @@ set noswapfile
 set nohlsearch
 set wrap
 set tw=0 wm=0
+set tabstop=3
+set shiftwidth=3
+set expandtab
 set lbr
 set backspace=indent,eol,start
 let g:ruby_path = system('echo $HOME/.rbenv/shims') "Help speed things up when working with ruby files
