@@ -141,7 +141,8 @@ alias xid='xinput disable'
 
 alias cd..='cd_up'
 
-# emacsclient tells emacs to edit a given file e.g. 'e prog.scm'
+alias ocd="OVERCOMMIT_DISABLE=1"
+
 alias e='emacsclient --no-wait'
 
 # enable programmable completion features (you don't need to enable
