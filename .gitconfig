@@ -21,6 +21,8 @@
 	purge = !git checkout master && git pull && git branch --merged | grep -Ev 'master' | xargs -n 1 git branch -d
 	mup = !git checkout master && git pull && git checkout -
 	mupr = !git mup && git rebase master
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+	rsm = rebase -i --autosquash master
 [push]
 	default = current
 
