@@ -166,16 +166,12 @@ fi
 # git autocompletion
 source ~/git-completion.bash
 
-# fzf bash-keybinds
-source /usr/share/fzf/shell/key-bindings.bash
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 #chruby
 source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-# fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # Node version manager
 export NVM_DIR="/home/afar/.nvm"
