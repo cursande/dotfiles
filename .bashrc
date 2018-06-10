@@ -172,6 +172,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 #chruby
 source /usr/local/share/chruby/chruby.sh
+chruby ruby-2.5.1
 
 # Node version manager
 export NVM_DIR="/home/afar/.nvm"

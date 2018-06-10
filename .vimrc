@@ -31,7 +31,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'junegunn/fzf' 
 Plugin 'junegunn/fzf.vim'
-Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
@@ -48,6 +47,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -81,7 +81,12 @@ augroup vimrcEx
 
   " javascript
   autocmd! FileType javascript set sw=2 sts=2 expandtab autoindent smartindent nocindent
+
+  " go
+  autocmd FileType go set sw=4 sts=4 ts=4 noexpandtab
+
 augroup END
+
 
 " }}}
 
@@ -103,15 +108,12 @@ inoremap <F12> <C-o>:syntax sync fromstart<CR>
 " PLUGIN CONFIG {{{
 
 " FZF.VIM
+
+" Set vim to use fzf when installed via git
+set rtp+=~\.fzf
+
 " map ctrl+p to fzf in vim
 nmap <c-p> :Files<CR>
-
-" ACK.VIM
-
-" If I'm using my config on a system where I don't have ag...
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
-endif
 
 " SLIME
 " set slime to use tmux session 
