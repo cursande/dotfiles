@@ -331,6 +331,8 @@ you should place your code here."
   (display-time-mode 1)
   ; don't create lockfiles
   (setq create-lockfiles nil)
+  ; run whitespace-cleanup before each save
+  (add-hook 'before-save-hook 'whitespace-cleanup)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
