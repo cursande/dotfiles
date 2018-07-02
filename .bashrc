@@ -171,8 +171,10 @@ source ~/git-completion.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 #chruby
-source /usr/local/share/chruby/chruby.sh
-chruby ruby-2.5.1
+if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
+   source /usr/local/share/chruby/chruby.sh
+   source /usr/local/share/chruby/auto.sh
+fi
 
 # Node version manager
 export NVM_DIR="/home/afar/.nvm"
