@@ -95,7 +95,7 @@ noremap  <f2> :w<return>
 inoremap <f2> <c-o>:w<return>
 
 " F5 to bring up buffer list, hit buffer id no to select it
-noremap <F5> :buffers<CR>:buffer<Space>
+noremap <F5> :Buffers<CR>
 
 " F12 to fix up syntax highlighting
 noremap <F12> <Esc>:syntax sync fromstart<CR>
