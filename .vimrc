@@ -43,6 +43,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'fatih/vim-go'
+Plugin 'mechatroner/rainbow_csv'
 
 call vundle#end()
 
