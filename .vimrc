@@ -14,6 +14,13 @@ set hidden
 
 " }}}
 
+" GITCOMMIT {{{
+
+" wrapping for commit messages
+autocmd Filetype gitcommit setlocal textwidth=72
+
+" }}}
+
 " VUNDLE CONFIG {{{
 
 filetype off " to resolve runtimepath issue when loading vundle
