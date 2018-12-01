@@ -64,6 +64,7 @@ values."
    dotspacemacs-additional-packages
    '(
      chruby
+     gruvbox-theme
      )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -139,10 +140,12 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(gruvbox
+                         spacemacs-light
                          hemisu-light
                          oldlace
-                         spacemacs-dark)
+                         spacemacs-dark
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -315,6 +318,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; Hack: need to download these files into this directory to ensure Gruvbox gets
+  ;; loaded correctly https://github.com/syl20bnr/spacemacs/issues/8090
+  ;; wget https://raw.githubusercontent.com/magnars/dash.el/master/dash.el
+  ;; wget https://raw.githubusercontent.com/sebastiansturm/autothemer/master/autothemer.el
+  (load-file "~/spacemacs_autoload/dash.el")
+  (load-file "~/spacemacs_autoload/autothemer.el")
   )
 
 (defun dotspacemacs/user-config ()
@@ -338,6 +347,8 @@ you should place your code here."
   ; but keep final newline
   (setq require-final-newline t)
   (setq mode-require-final-newline t)
+  ; truncate lines by default
+  (set-default 'truncate-lines t)
 
   ; org-projectile settings
   (with-eval-after-load 'org

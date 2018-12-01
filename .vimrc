@@ -11,6 +11,7 @@ set expandtab
 set lbr
 set backspace=indent,eol,start
 set hidden
+set nowrap
 
 " }}}
 
