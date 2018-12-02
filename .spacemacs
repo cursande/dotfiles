@@ -334,36 +334,43 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  ; write to file with space + f2
-  (spacemacs/set-leader-keys "<f2>" 'save-buffer)
-  ; allow spacemacs to edit git commit messages
+  ;; allow spacemacs to edit git commit messages
   (global-git-commit-mode t)
-  ; display time
+  ;; display time
   (display-time-mode 1)
-  ; don't create lockfiles
+  ;; don't create lockfiles
   (setq create-lockfiles nil)
-  ; run whitespace-cleanup before each save
+  ;; run whitespace-cleanup before each save
   (add-hook 'before-save-hook 'whitespace-cleanup)
-  ; but keep final newline
+  ;; but keep final newline
   (setq require-final-newline t)
   (setq mode-require-final-newline t)
-  ; truncate lines by default
+  ;; truncate lines by default
   (set-default 'truncate-lines t)
 
-  ; org-projectile settings
+  ;; org-projectile settings
   (with-eval-after-load 'org
     (setq-default dotspacemacs-configuration-layers
-                  '((org :variables org-projectile-file "/home/afar/projects/todos.org")))
+                  '((org :variables org-projectile-file "/home/afar/projects/todos.org")
+                    (ruby :variables ruby-test-runner 'rspec)))
     (with-eval-after-load 'org-agenda
       (require 'org-projectile)
       (push (org-projectile:todo-files) org-agenda-files))
     )
-  ; space + dc to create directory
+  ;; space + dc to create directory
   (spacemacs/set-leader-keys "dc" 'make-directory)
-  ; set space + f3 to cider-ns-refresh
+
+  ;; *** Clojure ***
+
+  ;; set space + f3 to cider-ns-refresh
   (spacemacs/set-leader-keys "<f3>" 'cider-ns-refresh)
-  ; default ruby
+
+  ;; *** Ruby ***
+
+  ;; default ruby
   (chruby "2.5.1")
+  ;; No magic comments on sving with ruby
+  (setq ruby-insert-encoding-magic-comment nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
