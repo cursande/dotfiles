@@ -124,12 +124,12 @@ function mkcd() {
 
 # To put my mind more at ease
 function prompt_fix() {
-    command=$1
+    command="$1"
 
     echo "Are you sure?"
     select yn in "Yes" "No"; do
         case $yn in
-            Yes ) ./bin/\fix $command; break;;
+            Yes ) ./bin/fix "$command"; break;;
             No ) break;;
         esac
     done
