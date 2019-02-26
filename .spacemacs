@@ -371,6 +371,12 @@ you should place your code here."
   (chruby "2.5.1")
   ;; No magic comments on saving with ruby
   (setq ruby-insert-encoding-magic-comment nil)
+
+  ;; *** Shell ***
+  (setq-default sh-basic-offset 2)
+
+  ;; *** JS ***
+  (setq-default js-indent-level 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
