@@ -153,7 +153,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Go Mono"
-                               :size 20
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -359,12 +359,6 @@ you should place your code here."
       (require 'org-projectile)
       (push (org-projectile:todo-files) org-agenda-files))
     )
-  ;; SPC + dc to create directory
-  (spacemacs/set-leader-keys "dc" 'make-directory)
-
-  ;; Set SPC + / for projectile-ag
-  (spacemacs/set-leader-keys "/" 'projectile-ag)
-
 
   ;; *** Clojure ***
 
