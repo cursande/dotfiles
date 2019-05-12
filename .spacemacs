@@ -376,7 +376,8 @@ you should place your code here."
   (setq-default sh-basic-offset 2)
 
   ;; *** JS ***
-  (setq-default js-indent-level 2)
+  (setq-default js2-basic-offset 2
+                js-indent-level 2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
