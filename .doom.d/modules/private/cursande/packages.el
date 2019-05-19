@@ -2,3 +2,4 @@
 ;;; private/cursande/packages.el
 
 (package! rainbow-delimiters)
+(package! geiser)
