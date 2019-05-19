@@ -21,3 +21,6 @@
 
 ;; For emacs 24 and above:
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; theme
+(load-theme 'doom-molokai t)
