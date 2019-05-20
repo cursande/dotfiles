@@ -6,11 +6,16 @@
 (setq doom-font (font-spec :family "Go Mono"
                            :size 18))
 
+(display-time-mode 1)
+
 (when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
 ;; remap ESC to clear search highlight
 (map! "ESC" #'evil-ex-nohighlight)
+
+;; Have flycheck disabled by default
+(global-flycheck-mode -1)
 
 ;; *** Tide configuration for TypeScript ***
 (defun setup-tide-mode ()
@@ -34,15 +39,15 @@
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; *** For .tsx files ***
-   (when (symbol-function 'flycheck-add-mode)
-     ((require 'web-mode)
-    (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
-    (add-hook 'web-mode-hook
-              (lambda ()
-                (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                  (setup-tide-mode))))
-    ;; enable typescript-tslint checker
-    (flycheck-add-mode 'typescript-tslint 'web-mode)))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+
+;; enable typescript-tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;; *** rainbow-delimiters ***
 
