@@ -60,4 +60,4 @@
 (setq geiser-active-implementations '(mit guile))
 
 ;; theme
-(load-theme 'doom-molokai t)
+(load-theme 'doom-dracula t)
