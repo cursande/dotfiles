@@ -9,6 +9,9 @@
 (when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
+;; remap ESC to clear search highlight
+(map! "ESC" #'evil-ex-nohighlight)
+
 ;; *** Tide configuration for TypeScript ***
 (defun setup-tide-mode ()
   (interactive)
