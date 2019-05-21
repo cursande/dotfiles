@@ -14,6 +14,11 @@
 ;; remap ESC to clear search highlight
 (map! "ESC" #'evil-ex-nohighlight)
 
+;; Copy file path to kill-ring
+(map! "<f5>" (lambda () (interactive)
+               (message buffer-file-name)
+               (kill-new buffer-file-name)))
+
 ;; Have flycheck disabled by default
 (global-flycheck-mode -1)
 
