@@ -22,6 +22,12 @@
 ;; Have flycheck disabled by default
 (global-flycheck-mode -1)
 
+;; Line numbers off by default
+(setq display-line-numbers-type nil)
+
+;; Don’t compact font caches during GC (doom-modeline)
+(setq inhibit-compacting-font-caches t)
+
 ;; *** Tide configuration for TypeScript ***
 (defun setup-tide-mode ()
   (interactive)
