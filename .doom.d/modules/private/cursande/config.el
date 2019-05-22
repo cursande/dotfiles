@@ -28,6 +28,16 @@
 ;; Don’t compact font caches during GC (doom-modeline)
 (setq inhibit-compacting-font-caches t)
 
+;; run whitespace-cleanup before each save
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; ...but keep final newline
+(setq require-final-newline t)
+(setq mode-require-final-newline t)
+
+;; truncate lines by default
+(set-default 'truncate-lines t)
+
 ;; *** Tide configuration for TypeScript ***
 (defun setup-tide-mode ()
   (interactive)
