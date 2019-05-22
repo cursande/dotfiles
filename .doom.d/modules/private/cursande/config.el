@@ -38,6 +38,10 @@
 ;; truncate lines by default
 (set-default 'truncate-lines t)
 
+;; Don't use popups for certain buffers, don't fuck up my REPL
+(set-popup-rule! "^\\* Mit" :ignore t)
+(set-popup-rule! "^\\*Python" :ignore t)
+
 ;; *** Tide configuration for TypeScript ***
 (defun setup-tide-mode ()
   (interactive)
