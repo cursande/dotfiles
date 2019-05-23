@@ -3,3 +3,4 @@
 
 (package! rainbow-delimiters)
 (package! geiser)
+(package! chruby)

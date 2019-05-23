@@ -91,5 +91,11 @@
 ;; geiser
 (setq geiser-active-implementations '(mit guile))
 
+
+;; ruby version management
+(require 'chruby)
+(chruby "ruby-2.5.1") ; default
+(add-hook 'ruby-mode-hook #'chruby-use-corresponding) ; if a .ruby_version is present
+
 ;; theme
 (load-theme 'doom-dracula t)
