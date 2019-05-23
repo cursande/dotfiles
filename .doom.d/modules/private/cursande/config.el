@@ -1,8 +1,5 @@
 ;;; private/cursande/config.el -*- lexical-binding: t; -*-
 
-;; NOTE - To reinstall this private module, run `make install` in
-;; `~/.emacs.d`
-
 (setq doom-font (font-spec :family "Go Mono"
                            :size 18))
 
@@ -18,6 +15,8 @@
 (map! "<f5>" (lambda () (interactive)
                (message buffer-file-name)
                (kill-new buffer-file-name)))
+
+(map! :leader "TAB" #'ace-window)
 
 ;; Have flycheck disabled by default
 (global-flycheck-mode -1)
