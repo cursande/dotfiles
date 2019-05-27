@@ -11,11 +11,6 @@
 ;; remap ESC to clear search highlight
 (map! "ESC" #'evil-ex-nohighlight)
 
-;; Copy file path to kill-ring
-(map! "<f5>" (lambda () (interactive)
-               (message buffer-file-name)
-               (kill-new buffer-file-name)))
-
 (map! :leader "TAB" #'ace-window)
 
 ;; Have flycheck disabled by default
@@ -41,7 +36,39 @@
 (set-popup-rule! "^\\* Mit" :ignore t)
 (set-popup-rule! "^\\*Python" :ignore t)
 
-;; *** Tide configuration for TypeScript ***
+;; Fall back on auto complete using dynamic abbreviations
+;; (add-to-list 'company-backends 'company-dabbrev-code)
+
+;; *** rainbow-delimiters ***
+
+;; rainbow-delimiters added to individual major modes as it can
+;; cause problems if added globally https://github.com/Fanael/rainbow-delimiters
+(add-hook 'ruby-mode #'rainbow-delimiters-mode)
+(add-hook 'python-mode #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode #'rainbow-delimiters-mode)
+(add-hook 'elixir-mode #'rainbow-delimiters-mode)
+(add-hook 'javascript-mode #'rainbow-delimiters-mode)
+(add-hook 'js2-mode #'rainbow-delimiters-mode)
+(add-hook 'cc-mode #'rainbow-delimiters-mode)
+
+;; For emacs 24 and above:
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; *** SCHEME ***
+;; geiser
+(setq geiser-active-implementations '(mit guile))
+
+;; *** RUBY ***
+;; ruby version management
+(require 'chruby)
+(chruby "ruby-2.5.1") ; default
+(add-hook 'ruby-mode-hook #'chruby-use-corresponding) ; if a .ruby_version is present
+
+(map! "C-c '" #'ruby-toggle-string-quotes)
+
+;; *** JS/TS ***
+
+;; Tide configuration for TypeScript
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -73,29 +100,8 @@
 ;; enable typescript-tslint checker
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
-;; *** rainbow-delimiters ***
-
-;; rainbow-delimiters added to individual major modes as it can
-;; cause problems if added globally https://github.com/Fanael/rainbow-delimiters
-(add-hook 'ruby-mode #'rainbow-delimiters-mode)
-(add-hook 'python-mode #'rainbow-delimiters-mode)
-(add-hook 'clojure-mode #'rainbow-delimiters-mode)
-(add-hook 'elixir-mode #'rainbow-delimiters-mode)
-(add-hook 'javascript-mode #'rainbow-delimiters-mode)
-(add-hook 'js2-mode #'rainbow-delimiters-mode)
-(add-hook 'cc-mode #'rainbow-delimiters-mode)
-
-;; For emacs 24 and above:
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-
-;; geiser
-(setq geiser-active-implementations '(mit guile))
-
-
-;; ruby version management
-(require 'chruby)
-(chruby "ruby-2.5.1") ; default
-(add-hook 'ruby-mode-hook #'chruby-use-corresponding) ; if a .ruby_version is present
+;; *** C ***
+(setq-default c-basic-offset 2)
 
 ;; theme
 (load-theme 'doom-dracula t)
