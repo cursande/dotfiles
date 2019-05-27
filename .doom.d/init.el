@@ -76,7 +76,8 @@
        ;;flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
-        +docsets)        ; ...or in Dash docsets locally
+        ;;+docsets
+        )        ; ...or in Dash docsets locally
        ;;lsp
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
@@ -140,7 +141,7 @@
        ruby              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
-       (sh bash)           ; she sells (ba|z|fi)sh shells on the C xor
+       ;;sh                ; she sells (ba|z|fi)sh shells on the C xor
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
