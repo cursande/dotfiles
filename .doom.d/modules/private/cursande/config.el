@@ -66,6 +66,17 @@
 
 (map! "C-c '" #'ruby-toggle-string-quotes)
 
+;; Just for unit testing with Ruby
+(defun file-path-and-line-number ()
+  (interactive)
+  (setq filename (+default/yank-buffer-filename))
+  (setq line-num (substring (what-line) 5 nil))
+  (setq result (concat filename ":" line-num))
+  (message result)
+  (kill-new result))
+
+(map! "<f5>" #'file-path-and-line-number)
+
 ;; *** JS/TS ***
 
 ;; Tide configuration for TypeScript
