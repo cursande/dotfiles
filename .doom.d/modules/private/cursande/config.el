@@ -32,6 +32,15 @@
 ;; truncate lines by default
 (set-default 'truncate-lines t)
 
+;; modeline config
+(def-package! doom-modeline
+  :init
+  (setq doom-modeline-buffer-file-name-style 'relative-from-project)
+  (setq doom-modeline-icon nil)
+  (setq doom-modeline-major-mode-icon nil)
+  (setq doom-modeline-minor-modes t)
+   :hook (after-init . doom-modeline-init))
+
 ;; Don't use popups for certain buffers, don't fuck up my REPL
 (set-popup-rule! "^\\* Mit" :ignore t)
 (set-popup-rule! "^\\*Python" :ignore t)
