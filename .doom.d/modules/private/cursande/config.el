@@ -88,7 +88,12 @@
 
 (map! "<f5>" #'file-path-and-line-number)
 
-;; *** JS/TS ***
+;; *** WEB + JS/TS ***
+(defun web-mode-tweaks ()
+  (setq web-mode-code-indent-offset 2
+        web-mode-css-indent-offset 2))
+
+(add-hook 'web-mode-hook 'web-mode-tweaks)
 
 ;; Tide configuration for TypeScript
 (defun setup-tide-mode ()
@@ -96,12 +101,14 @@
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq tide-format-options '(:indentSize 2 :tabSize 2))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
   (company-mode +1))
+
 
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
