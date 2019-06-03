@@ -8,6 +8,8 @@
 (when (version<= "26.0.50" emacs-version)
   (global-display-line-numbers-mode))
 
+(setq-default indent-tabs-mode nil)
+
 ;; remap ESC to clear search highlight
 (map! "ESC" #'evil-ex-nohighlight)
 
@@ -119,6 +121,12 @@
 
 ;; enable typescript-tslint checker
 (flycheck-add-mode 'typescript-tslint 'web-mode)
+
+;; *** PYTHON ***
+(map! :leader
+      :mode python-mode
+      "mr" 'python-shell-send-region
+      "m'" '+python/open-repl)
 
 ;; *** C ***
 (setq-default c-basic-offset 2)
