@@ -71,9 +71,13 @@
 
 ;; *** RUBY ***
 ;; ruby version management
-(require 'chruby)
-(chruby "ruby-2.5.1") ; default
-(add-hook 'ruby-mode-hook #'chruby-use-corresponding) ; if a .ruby_version is present
+(defun switch-ruby-version ()
+  (interactive)
+  (require 'chruby)
+  (chruby "ruby-2.5.1") ; default
+  (add-hook 'ruby-mode-hook 'chruby-use-corresponding)) ; if a .ruby_version is present
+
+(add-hook 'ruby-mode-hook 'switch-ruby-version)
 
 (map! "C-c '" #'ruby-toggle-string-quotes)
 
