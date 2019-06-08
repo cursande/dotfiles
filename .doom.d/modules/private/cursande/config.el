@@ -134,10 +134,11 @@
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;; *** PYTHON ***
-(map! :leader
-      :mode python-mode
-      "mr" 'python-shell-send-region
-      "m'" '+python/open-repl)
+(map! :localleader
+      :map python-mode-map
+        "r" #'python-shell-send-region
+        "'" #'+python/open-repl
+      )
 
 ;; *** C ***
 (setq-default c-basic-offset 2)
