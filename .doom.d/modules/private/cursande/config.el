@@ -114,7 +114,6 @@
   ;; `M-x package-install [ret] company`
   (company-mode +1))
 
-
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
@@ -143,6 +142,14 @@
 
 ;; *** C ***
 (setq-default c-basic-offset 2)
+
+;; *** SH ***
+(defun setup-shell-mode ()
+  (interactive)
+  (flycheck-mode +1) ; For ShellCheck
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+(add-hook 'sh-mode-hook #'setup-shell-mode)
 
 ;; theme
 (load-theme 'doom-dracula t)
