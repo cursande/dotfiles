@@ -68,6 +68,7 @@
 ;; *** SCHEME ***
 ;; geiser
 (setq geiser-active-implementations '(mit guile))
+(map! :localleader :map scheme-mode-map "'" #'run-geiser)
 
 ;; *** RUBY ***
 ;; ruby version management
