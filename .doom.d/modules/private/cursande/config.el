@@ -75,8 +75,8 @@
 (defun switch-ruby-version ()
   (interactive)
   (require 'chruby)
-  (chruby "ruby-2.5.1") ; default
-  (add-hook 'ruby-mode-hook 'chruby-use-corresponding)) ; if a .ruby_version is present
+  (chruby-use-corresponding)
+  (flycheck-mode +1)) ; if a .ruby_version is present
 
 (add-hook 'ruby-mode-hook 'switch-ruby-version)
 
