@@ -4,3 +4,4 @@
 (package! rainbow-delimiters)
 (package! geiser)
 (package! chruby)
+(package! nginx-mode)
