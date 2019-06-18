@@ -72,13 +72,17 @@
 
 ;; *** RUBY ***
 ;; ruby version management
-(defun switch-ruby-version ()
+(defun setup-ruby-mode ()
   (interactive)
-  (require 'chruby)
-  (chruby-use-corresponding)
-  (flycheck-mode +1)) ; if a .ruby_version is present
+((enh-ruby-mode
+  .
+  ((flycheck-command-wrapper-function
+    .
+    (lambda (command)
+      (append '("bundle" "exec") command))))))
+(chruby-use-corresponding))
 
-(add-hook 'ruby-mode-hook 'switch-ruby-version)
+(add-hook 'enh-ruby-mode-hook 'setup-ruby-mode)
 
 (map! "C-c '" #'ruby-toggle-string-quotes)
 
