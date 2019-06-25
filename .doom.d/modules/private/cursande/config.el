@@ -1,7 +1,6 @@
 ;;; private/cursande/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "Go Mono"
-                           :size 18))
+(setq doom-font (font-spec :family "Go Mono" :size 16))
 
 (display-time-mode 1)
 
@@ -145,6 +144,13 @@
       )
 
 ;; *** C ***
+(defun setup-c-mode ()
+  (interactive)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+(add-hook 'c-mode-hook #'setup-c-mode)
+
 (setq-default c-basic-offset 2)
 
 ;; *** SH ***
