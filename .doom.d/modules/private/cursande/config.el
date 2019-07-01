@@ -14,6 +14,8 @@
 
 (map! :leader "TAB" #'ace-window)
 
+(map! "<f8>" #'kill-buffer-and-window)
+
 ;; Have flycheck disabled by default
 (global-flycheck-mode -1)
 
