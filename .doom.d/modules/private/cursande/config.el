@@ -73,13 +73,7 @@
 ;; ruby version management
 (defun setup-ruby-mode ()
   (interactive)
-((enh-ruby-mode
-  .
-  ((flycheck-command-wrapper-function
-    .
-    (lambda (command)
-      (append '("bundle" "exec") command))))))
-(chruby-use-corresponding))
+  (chruby-use-corresponding))
 
 (add-hook 'enh-ruby-mode-hook 'setup-ruby-mode)
 
