@@ -70,6 +70,8 @@
 ;; geiser
 (setq geiser-active-implementations '(mit guile))
 (map! :localleader :map scheme-mode-map "'" #'run-geiser)
+(map! :map geiser-repl-mode-map "C-l" #'geiser-repl-clear-buffer)
+
 
 ;; *** RUBY ***
 ;; ruby version management
