@@ -35,6 +35,9 @@
 ;; truncate lines by default
 (set-default 'truncate-lines t)
 
+;; be prompted to use VLF when opening large files
+(require 'vlf-setup)
+
 ;; modeline config
 (def-package! doom-modeline
   :init
