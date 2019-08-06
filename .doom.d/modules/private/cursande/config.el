@@ -1,6 +1,6 @@
 ;;; private/cursande/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "Go Mono" :size 16))
+(setq doom-font (font-spec :family "IBM Plex Mono Text" :size 16))
 
 (display-time-mode 1)
 
@@ -37,6 +37,7 @@
 
 ;; be prompted to use VLF when opening large files
 (require 'vlf-setup)
+(custom-set-variables '(vlf-tune-enabled nil))
 
 ;; modeline config
 (def-package! doom-modeline
