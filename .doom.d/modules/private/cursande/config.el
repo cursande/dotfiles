@@ -139,6 +139,9 @@
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;; *** PYTHON ***
+
+(setq python-shell-interpreter "python3")
+
 (map! :localleader
       :map python-mode-map
         "r" #'python-shell-send-region
