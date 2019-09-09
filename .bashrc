@@ -176,10 +176,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-if [ -x /usr/bin/mint-fortune ]; then
-    /usr/bin/mint-fortune
-fi
-
 # git autocompletion
 source ~/git-completion.bash
 
@@ -196,9 +192,6 @@ fi
 # Node version manager
 export NVM_DIR="/home/afar/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-# Yarn
-export PATH="$PATH:/opt/yarn-[version]/bin"
 
 # set go path
 export GOPATH="$HOME/go"
