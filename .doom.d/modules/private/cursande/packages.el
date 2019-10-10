@@ -6,3 +6,4 @@
 (package! chruby)
 (package! nginx-mode)
 (package! vlf)
+(package! flycheck-clj-kondo)

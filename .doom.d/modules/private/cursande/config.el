@@ -77,6 +77,14 @@
 (map! :map geiser-repl-mode-map "C-l" #'geiser-repl-clear-buffer)
 
 
+;; *** CLOJURE ***
+(defun setup-clojure-mode ()
+  (interactive)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+(add-hook 'clojure-mode-hook #'setup-clojure-mode)
+
 ;; *** RUBY ***
 ;; ruby version management
 (defun setup-ruby-mode ()
