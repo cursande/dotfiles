@@ -168,4 +168,4 @@
 (add-hook 'sh-mode-hook #'setup-shell-mode)
 
 ;; theme
-(load-theme 'doom-dracula t)
+(load-theme 'doom-city-lights t)
