@@ -39,3 +39,7 @@ Thumbs.db
 # Override files
 
 *.override.yml
+
+# Linter cache
+
+.clj-kondo
