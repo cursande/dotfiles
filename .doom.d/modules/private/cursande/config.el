@@ -39,6 +39,9 @@
 (require 'vlf-setup)
 (custom-set-variables '(vlf-tune-enabled nil))
 
+;; Stop evil mode from doing annoying stuff,  recording macros I don't want
+(add-hook 'view-mode-hook 'evil-motion-state)
+
 ;; modeline config
 (def-package! doom-modeline
   :init
@@ -80,6 +83,7 @@
 ;; *** CLOJURE ***
 (defun setup-clojure-mode ()
   (interactive)
+  (require 'flycheck-clj-kondo)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled)))
 
