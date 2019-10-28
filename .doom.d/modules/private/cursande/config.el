@@ -89,6 +89,8 @@
 
 (add-hook 'clojure-mode-hook #'setup-clojure-mode)
 
+(map! :map cider-repl-mode-map "<f6>" #'cider-repl-history)
+
 ;; *** RUBY ***
 ;; ruby version management
 (defun setup-ruby-mode ()
