@@ -122,19 +122,6 @@ function mkcd() {
     cd "$1"
 }
 
-# To put my mind more at ease
-function prompt_fix() {
-    command="$1"
-
-    echo "Are you sure?"
-    select yn in "Yes" "No"; do
-        case $yn in
-            Yes ) ./bin/fix "$command"; break;;
-            No ) break;;
-        esac
-    done
-}
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -163,8 +150,6 @@ alias e='emacsclient --no-wait'
 
 alias be='bundle exec'
 
-alias fix='prompt_fix'
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -183,7 +168,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-#chruby
+# chruby
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ]; then
     source /usr/local/share/chruby/chruby.sh
     source /usr/local/share/chruby/auto.sh
@@ -195,3 +180,4 @@ export NVM_DIR="/home/afar/.nvm"
 
 # set go path
 export GOPATH="$HOME/go"
+
