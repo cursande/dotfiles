@@ -150,6 +150,10 @@ alias e='emacsclient --no-wait'
 
 alias be='bundle exec'
 
+alias clj-lint='mkdir -p .clj-kondo && clj-kondo --lint ./'
+
+alias clj-lint-changed-only='clj-kondo --lint `git diff --name-only master.. | rg *.clj`'
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
