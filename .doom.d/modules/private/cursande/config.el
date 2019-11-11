@@ -42,6 +42,9 @@
 ;; Stop evil mode from doing annoying stuff,  recording macros I don't want
 (add-hook 'view-mode-hook 'evil-motion-state)
 
+;; Don't let primary clipboard override system clipboard
+(fset 'evil-visual-update-x-selection 'ignore)
+
 ;; modeline config
 (def-package! doom-modeline
   :init
