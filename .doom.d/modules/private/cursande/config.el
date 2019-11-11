@@ -116,7 +116,8 @@
 (defun web-mode-tweaks ()
   (setq web-mode-markup-indent-offset 2
         web-mode-code-indent-offset 2
-        web-mode-css-indent-offset 2))
+        web-mode-css-indent-offset 2
+        js-indent-level 2))
 
 (add-hook 'web-mode-hook 'web-mode-tweaks)
 
