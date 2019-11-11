@@ -73,6 +73,10 @@
 ;; For emacs 24 and above:
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
+;; *** SHELL ***
+(setq shell-file-name "bash")
+(setq shell-command-switch "-ic")
+
 ;; *** SCHEME ***
 ;; geiser
 (setq geiser-active-implementations '(mit guile))
