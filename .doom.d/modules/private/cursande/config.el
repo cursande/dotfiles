@@ -189,5 +189,13 @@
 
 (add-hook 'sh-mode-hook #'setup-shell-mode)
 
+;; *** TF ***
+(defun setup-tf-mode ()
+  (interactive)
+  (flycheck-mode +1) ; tflint
+  (company-terraform-init))
+
+(add-hook 'terraform-mode-hook #'setup-tf-mode)
+
 ;; theme
 (load-theme 'doom-city-lights t)
