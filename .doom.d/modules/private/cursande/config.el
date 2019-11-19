@@ -1,6 +1,6 @@
 ;;; private/cursande/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "IBM Plex Mono Text" :size 16))
+(setq doom-font (font-spec :family "IBM Plex Mono Text" :size 14))
 
 (display-time-mode 1)
 
@@ -78,7 +78,14 @@
 
 ;; *** SHELL ***
 (setq shell-file-name "bash")
-(setq shell-command-switch "-ic")
+
+(defun setup-shell-mode ()
+  (interactive)
+  (flycheck-mode +1) ; For ShellCheck
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+(add-hook 'sh-mode-hook #'setup-shell-mode)
+
 
 ;; *** SCHEME ***
 ;; geiser
@@ -181,13 +188,21 @@
 
 (setq-default c-basic-offset 2)
 
-;; *** SH ***
-(defun setup-shell-mode ()
+;; *** GO ***
+(defun setup-go-mode ()
   (interactive)
-  (flycheck-mode +1) ; For ShellCheck
-  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+  ;; Set go path env vars so go tools know where to look
+  (setq exec-path (append '("/usr/local/go/bin") exec-path))
+  (setenv "PATH" (concat "/usr/local/go/bin:" (getenv "PATH"))))
 
-(add-hook 'sh-mode-hook #'setup-shell-mode)
+(add-hook 'go-mode-hook #'setup-go-mode)
+
+;; *** ORG ***
+(defun setup-org-mode ()
+  (interactive)
+  (setq org-hide-emphasis-markers t))
+
+(add-hook 'org-mode-hook #'setup-org-mode)
 
 ;; *** TF ***
 (defun setup-tf-mode ()
@@ -198,4 +213,4 @@
 (add-hook 'terraform-mode-hook #'setup-tf-mode)
 
 ;; theme
-(load-theme 'doom-city-lights t)
+(load-theme 'doom-nord t)
