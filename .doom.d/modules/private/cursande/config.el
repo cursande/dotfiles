@@ -195,6 +195,11 @@
   (setq exec-path (append '("/usr/local/go/bin") exec-path))
   (setenv "PATH" (concat "/usr/local/go/bin:" (getenv "PATH"))))
 
+(map! :map
+      go-mode-map
+      "C-c C-g"
+      #'godoc)
+
 (add-hook 'go-mode-hook #'setup-go-mode)
 
 ;; *** ORG ***
