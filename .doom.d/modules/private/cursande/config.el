@@ -16,6 +16,8 @@
 
 (map! "<f8>" #'kill-buffer-and-window)
 
+(setq-default evil-kill-on-visual-paste nil)
+
 ;; Have flycheck disabled by default
 (global-flycheck-mode -1)
 
@@ -195,11 +197,7 @@
   (setq exec-path (append '("/usr/local/go/bin") exec-path))
   (setenv "PATH" (concat "/usr/local/go/bin:" (getenv "PATH"))))
 
-(map! :map
-      go-mode-map
-      "C-c C-g"
-      #'godoc)
-
+(add-hook 'go-mode-hook #'gorepl-mode)
 (add-hook 'go-mode-hook #'setup-go-mode)
 
 ;; *** ORG ***
