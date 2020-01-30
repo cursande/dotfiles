@@ -7,3 +7,4 @@
 (package! nginx-mode)
 (package! vlf)
 (package! flycheck-clj-kondo)
+(package! exec-path-from-shell)

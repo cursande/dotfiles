@@ -47,6 +47,13 @@
 ;; Don't let primary clipboard override system clipboard
 (fset 'evil-visual-update-x-selection 'ignore)
 
+;; MacOS makes this harder than it needs to be
+(when (and (string-equal system-type "darwin")
+           (memq window-system '(mac ns x)))
+  (setq exec-path-from-shell-variables
+        '("PATH" "MANPATH" "AWS_PROFILE"))
+  (exec-path-from-shell-initialize))
+
 ;; modeline config
 (def-package! doom-modeline
   :init
