@@ -18,6 +18,8 @@
 
 (setq-default evil-kill-on-visual-paste nil)
 
+(map! :leader "/" #'+ivy/project-search)
+
 ;; Have flycheck disabled by default
 (global-flycheck-mode -1)
 
@@ -55,12 +57,12 @@
   (exec-path-from-shell-initialize))
 
 ;; modeline config
-(def-package! doom-modeline
+(use-package! doom-modeline
   :init
   (setq doom-modeline-buffer-file-name-style 'relative-from-project)
   (setq doom-modeline-icon nil)
   (setq doom-modeline-major-mode-icon nil)
-  (setq doom-modeline-minor-modes t)
+  (setq doom-modeline-minor-modes nil)
    :hook (after-init . doom-modeline-init))
 
 ;; Don't use popups for certain buffers, don't fuck up my REPL
@@ -102,6 +104,9 @@
 (map! :localleader :map scheme-mode-map "'" #'run-geiser)
 (map! :map geiser-repl-mode-map "C-l" #'geiser-repl-clear-buffer)
 
+;; This is a hack to set the path to scheme, the brew-installed scheme isn't
+;; compiling properly by default because of xcode nonsense
+(setq geiser-mit-binary "/usr/local/bin/scheme")
 
 ;; *** CLOJURE ***
 (defun setup-clojure-mode ()
@@ -112,7 +117,67 @@
 
 (add-hook 'clojure-mode-hook #'setup-clojure-mode)
 
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'clojure-align nil 'local)))
+
 (map! :map cider-repl-mode-map "<f6>" #'cider-repl-history)
+
+(after! cider
+  (add-hook 'company-completion-started-hook 'custom/set-company-maps)
+  (add-hook 'company-completion-finished-hook 'custom/unset-company-maps)
+  (add-hook 'company-completion-cancelled-hook 'custom/unset-company-maps))
+
+(defun custom/unset-company-maps (&rest unused)
+  "Set default mappings (outside of company).
+    Arguments (UNUSED) are ignored."
+  (general-def
+    :states 'insert
+    :keymaps 'override
+    "<down>" nil
+    "<up>"   nil
+    "RET"    nil
+    [return] nil
+    "C-n"    nil
+    "C-p"    nil
+    "C-j"    nil
+    "C-k"    nil
+    "C-h"    nil
+    "C-u"    nil
+    "C-d"    nil
+    "C-s"    nil
+    "C-S-s"   (cond ((featurep! :completion helm) nil)
+                    ((featurep! :completion ivy)  nil))
+    "C-SPC"   nil
+    "TAB"     nil
+    [tab]     nil
+    [backtab] nil))
+
+(defun custom/set-company-maps (&rest unused)
+  "Set maps for when you're inside company completion.
+    Arguments (UNUSED) are ignored."
+  (general-def
+    :states 'insert
+    :keymaps 'override
+    "<down>" #'company-select-next
+    "<up>" #'company-select-previous
+    "RET" #'company-complete
+    [return] #'company-complete
+    "C-w"     nil  ; don't interfere with `evil-delete-backward-word'
+    "C-n"     #'company-select-next
+    "C-p"     #'company-select-previous
+    "C-j"     #'company-select-next
+    "C-k"     #'company-select-previous
+    "C-h"     #'company-show-doc-buffer
+    "C-u"     #'company-previous-page
+    "C-d"     #'company-next-page
+    "C-s"     #'company-filter-candidates
+    "C-S-s"   (cond ((featurep! :completion helm) #'helm-company)
+                    ((featurep! :completion ivy)  #'counsel-company))
+    "C-SPC"   #'company-complete-common
+    "TAB"     #'company-complete-common-or-cycle
+    [tab]     #'company-complete-common-or-cycle
+    [backtab] #'company-select-previous))
 
 ;; *** RUBY ***
 ;; ruby version management
@@ -139,8 +204,9 @@
 (defun web-mode-tweaks ()
   (setq web-mode-markup-indent-offset 2
         web-mode-code-indent-offset 2
-        web-mode-css-indent-offset 2
-        js-indent-level 2))
+        web-mode-css-indent-offset 2))
+
+(setq js-indent-level 2)
 
 (add-hook 'web-mode-hook 'web-mode-tweaks)
 
@@ -207,6 +273,14 @@
 (add-hook 'go-mode-hook #'gorepl-mode)
 (add-hook 'go-mode-hook #'setup-go-mode)
 
+;; *** SH ***
+(defun setup-shell-mode ()
+  (interactive)
+  (flycheck-mode +1) ; For ShellCheck
+  (setq flycheck-check-syntax-automatically '(save mode-enabled)))
+
+(add-hook 'sh-mode-hook #'setup-shell-mode)
+
 ;; *** ORG ***
 (defun setup-org-mode ()
   (interactive)
@@ -221,6 +295,3 @@
   (company-terraform-init))
 
 (add-hook 'terraform-mode-hook #'setup-tf-mode)
-
-;; theme
-(load-theme 'doom-nord t)

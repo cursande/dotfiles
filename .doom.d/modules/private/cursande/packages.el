@@ -8,3 +8,5 @@
 (package! vlf)
 (package! flycheck-clj-kondo)
 (package! exec-path-from-shell)
+(package! yaml-mode)
+(package! kaolin-themes)
