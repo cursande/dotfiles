@@ -1,0 +1,6 @@
+# ---------------
+# Custom commands
+# ---------------
+
+# Copy file path to clipboard (macos)
+bind generic	5        !@sh -c 'printf %(file) | pbcopy'
